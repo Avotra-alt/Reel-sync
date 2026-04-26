@@ -3,8 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>ReelSync AI — Générateur Reel</title>
-<link rel="manifest" href="/manifest.json">
+<title>ReelSync AI — iPhone Fix</title>
 <meta name="theme-color" content="#08080d">
 <style>
 *{box-sizing:border-box}
@@ -16,47 +15,61 @@ p{color:#c9c9d8;line-height:1.4}
 label{display:block;font-weight:800;margin-bottom:8px}
 input,select{width:100%;padding:14px;border-radius:14px;border:1px solid #3b3b55;background:#0f0f18;color:white;font-size:15px}
 button{width:100%;padding:16px;border:0;border-radius:16px;background:#7c5cff;color:white;font-size:18px;font-weight:900;margin-top:12px}
+button.secondary{background:#2a2a3d}
 button:disabled{opacity:.5}
 canvas{width:100%;aspect-ratio:9/16;background:#000;border-radius:24px;margin-top:14px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .small{font-size:13px;color:#aaa}
 .status{white-space:pre-line;color:#d9d9ff;font-weight:700}
-video{display:none}
 a.download{display:none;width:100%;padding:16px;border-radius:16px;background:#00c27a;color:#06140e;text-align:center;font-weight:900;text-decoration:none;margin-top:12px}
+.media-list{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.thumb{height:92px;border-radius:12px;background:#0f0f18;object-fit:cover;width:100%;border:1px solid #333}
 .badge{display:inline-block;padding:7px 10px;border-radius:999px;background:#25253a;color:#ddd;font-size:12px;font-weight:800}
 </style>
 </head>
 <body>
 <main class="app">
-<span class="badge">Prototype Vercel</span>
+<span class="badge">Version iPhone corrigée</span>
 <h1>🎬 ReelSync AI</h1>
-<p>Ajoute tes photos/vidéos + une musique, choisis un style, puis génère une preview Reel 9:16 directement sur ton iPhone.</p>
+<p>Ajoute tes contenus un par un. Cette version évite le bug du sélecteur multiple sur iPhone.</p>
 
 <div class="card">
-<label>1. Choisis tes contenus</label>
-<input id="mediaInput" type="file" accept="image/*,video/*" multiple>
-<p class="small">Sélectionne 3 à 8 photos/vidéos pour un rendu plus dynamique.</p>
+<label>1. Ajoute une photo</label>
+<input id="imageInput" type="file" accept="image/*">
+<button class="secondary" id="addImageBtn">+ Ajouter cette photo</button>
+</div>
+
+<div class="card">
+<label>Option : ajoute une vidéo</label>
+<input id="videoInput" type="file" accept="video/*">
+<button class="secondary" id="addVideoBtn">+ Ajouter cette vidéo</button>
+</div>
+
+<div class="card">
+<label>Contenus ajoutés</label>
+<div id="mediaList" class="media-list"></div>
+<p id="countText" class="small">Aucun contenu ajouté.</p>
 </div>
 
 <div class="card">
 <label>2. Ajoute ton audio</label>
 <input id="audioInput" type="file" accept="audio/*">
-<p class="small">Prototype : transitions rythmées simulées. V1 avancée : vraie détection des beats serveur.</p>
+<p class="small">Choisis une musique ou un audio depuis Fichiers.</p>
 </div>
 
 <div class="card">
-<label>3. Choisis le style</label>
+<label>3. Style + durée</label>
 <div class="row">
 <select id="style">
-<option value="viral">Viral — flash/zoom</option>
-<option value="luxury">Luxury — smooth</option>
-<option value="sport">Sport — punchy</option>
-<option value="travel">Travel — cinematic</option>
+<option value="viral">Viral</option>
+<option value="luxury">Luxury</option>
+<option value="sport">Sport</option>
+<option value="travel">Travel</option>
 </select>
 <select id="duration">
-<option value="8">8 secondes</option>
-<option value="12">12 secondes</option>
-<option value="15">15 secondes</option>
+<option value="8">8 sec</option>
+<option value="12">12 sec</option>
+<option value="15">15 sec</option>
 </select>
 </div>
 <button id="generateBtn">⚡ Générer le Reel</button>
@@ -65,9 +78,8 @@ a.download{display:none;width:100%;padding:16px;border-radius:16px;background:#0
 </div>
 
 <canvas id="canvas" width="1080" height="1920"></canvas>
-<audio id="audio" crossorigin="anonymous"></audio>
+<audio id="audio"></audio>
 </main>
-
 <script src="/app.js"></script>
 </body>
 </html>
