@@ -1,6 +1,6 @@
 {
-  "name": "reelsync-ai-iphone-fix",
-  "version": "1.1.0",
+  "name": "reelsync-ai-v2-beat-effects",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "start": "vercel dev",
