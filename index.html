@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>ReelSync AI V2 — Beat Effects</title>
+<title>ReelSync AI V3 — Auto Import</title>
 <meta name="theme-color" content="#08080d">
 <style>
 *{box-sizing:border-box}
@@ -16,6 +16,7 @@ label{display:block;font-weight:900;margin-bottom:8px}
 input,select{width:100%;padding:14px;border-radius:14px;border:1px solid #3b3b55;background:#0f0f18;color:white;font-size:15px}
 button{width:100%;padding:16px;border:0;border-radius:16px;background:#7c5cff;color:white;font-size:18px;font-weight:900;margin-top:12px}
 button.secondary{background:#2a2a3d}
+button.danger{background:#5a2430}
 button:disabled{opacity:.5}
 canvas{width:100%;aspect-ratio:9/16;background:#000;border-radius:24px;margin-top:14px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -30,22 +31,23 @@ a.download{display:none;width:100%;padding:16px;border-radius:16px;background:#0
 </head>
 <body>
 <main class="app">
-<span class="badge">V2 Beat Effects</span>
+<span class="badge">V3 iPhone Auto Import</span>
 <h1>🎬 ReelSync AI</h1>
-<p>Importe plusieurs photos/vidéos, ajoute un audio, puis génère un Reel avec zooms, flashs, shakes et transitions déclenchés par le beat.</p>
+<p>Sélectionne plusieurs photos/vidéos : elles s’ajoutent automatiquement. Plus besoin du bouton Ajouter.</p>
 
 <div class="card">
 <label>1. Photos / vidéos</label>
 <input id="mediaInput" type="file" accept="image/*,video/*" multiple>
-<button class="secondary" id="addMediaBtn">+ Ajouter à la sélection</button>
 <div id="mediaList" class="media-list"></div>
 <p id="countText" class="small">Aucun contenu ajouté.</p>
+<button class="danger" id="clearMediaBtn">Vider la sélection</button>
 </div>
 
 <div class="card">
 <label>2. Audio / chanson</label>
 <input id="audioInput" type="file" accept="audio/*,video/mp4,video/quicktime,.mp3,.m4a,.aac,.wav,.mp4,.mov">
-<p class="warning">Sur iPhone, Apple bloque souvent l’import direct de musiques Apple Music/Spotify. Utilise un fichier audio dans l’app Fichiers : MP3, M4A, AAC, WAV ou MP4.</p>
+<p id="audioText" class="small">Aucun audio ajouté.</p>
+<p class="warning">Sur iPhone, Apple Music/Spotify ne donnent souvent pas de fichier utilisable. Utilise un fichier MP3/M4A/AAC/WAV/MP4 depuis Fichiers.</p>
 </div>
 
 <div class="card">

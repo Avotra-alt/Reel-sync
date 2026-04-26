@@ -10,13 +10,30 @@ let selectedFiles = [];
 
 function log(t){ statusEl.textContent = t; }
 
-document.getElementById('addMediaBtn').addEventListener('click', () => {
+document.getElementById('mediaInput').addEventListener('change', () => {
   const files = [...document.getElementById('mediaInput').files];
-  if(!files.length){ log('Choisis au moins une photo ou vidéo.'); return; }
+  if(!files.length) return;
   selectedFiles.push(...files);
   document.getElementById('mediaInput').value = '';
   refreshList();
-  log(files.length + ' contenu(s) ajouté(s) ✅');
+  log(files.length + ' contenu(s) ajouté(s) automatiquement ✅');
+});
+
+document.getElementById('clearMediaBtn').addEventListener('click', () => {
+  selectedFiles = [];
+  refreshList();
+  log('Sélection vidée.');
+});
+
+document.getElementById('audioInput').addEventListener('change', () => {
+  const file = document.getElementById('audioInput').files[0];
+  const audioText = document.getElementById('audioText');
+  if(file){
+    audioText.textContent = 'Audio ajouté : ' + file.name;
+    log('Audio ajouté ✅');
+  } else {
+    audioText.textContent = 'Aucun audio ajouté.';
+  }
 });
 
 function refreshList(){

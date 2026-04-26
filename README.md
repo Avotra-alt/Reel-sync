@@ -1,25 +1,9 @@
-# ReelSync AI V2 — Beat Effects
+# ReelSync AI V3 — Auto Import
 
-Améliorations :
-- Import multiple photos/vidéos
-- Audio : MP3, M4A, AAC, WAV, MP4, MOV selon compatibilité iPhone/Safari
-- Détection des pics audio avec Web Audio API
-- Effets réactifs au beat : zoom, flash, shake, bars, transitions
-- Export vidéo 9:16 côté navigateur
+Correction iPhone :
+- suppression du bouton Ajouter
+- les photos/vidéos s’ajoutent automatiquement après sélection multiple
+- bouton pour vider la sélection
+- audio ajouté automatiquement après choix du fichier
 
-## Installation sur GitHub/Vercel
-
-Remplace les fichiers actuels du repo par :
-- index.html
-- app.js
-- package.json
-- vercel.json
-- manifest.json
-- README.md
-
-Puis redeploy sur Vercel.
-
-## Note
-
-Les musiques Apple Music/Spotify ne peuvent généralement pas être importées directement à cause des restrictions iOS/DRM.
-Utilise un fichier audio dans l'app Fichiers.
+Remplace les fichiers de ton repo par ceux-ci puis redeploy sur Vercel.

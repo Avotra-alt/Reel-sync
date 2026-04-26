@@ -1,6 +1,6 @@
 {
-  "name": "reelsync-ai-v2-beat-effects",
-  "version": "2.0.0",
+  "name": "reelsync-ai-v3-auto-import",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "start": "vercel dev",
