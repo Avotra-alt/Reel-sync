@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>ReelSync AI — Générateur Reel</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#08080d">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#07070b;color:white;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.app{max-width:460px;margin:0 auto;min-height:100vh;padding:18px;background:linear-gradient(180deg,#151529,#08080d)}
+h1{font-size:28px;margin:8px 0 6px}
+p{color:#c9c9d8;line-height:1.4}
+.card{background:#171725;border:1px solid #2e2e45;border-radius:22px;padding:16px;margin:14px 0}
+label{display:block;font-weight:800;margin-bottom:8px}
+input,select{width:100%;padding:14px;border-radius:14px;border:1px solid #3b3b55;background:#0f0f18;color:white;font-size:15px}
+button{width:100%;padding:16px;border:0;border-radius:16px;background:#7c5cff;color:white;font-size:18px;font-weight:900;margin-top:12px}
+button:disabled{opacity:.5}
+canvas{width:100%;aspect-ratio:9/16;background:#000;border-radius:24px;margin-top:14px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.small{font-size:13px;color:#aaa}
+.status{white-space:pre-line;color:#d9d9ff;font-weight:700}
+video{display:none}
+a.download{display:none;width:100%;padding:16px;border-radius:16px;background:#00c27a;color:#06140e;text-align:center;font-weight:900;text-decoration:none;margin-top:12px}
+.badge{display:inline-block;padding:7px 10px;border-radius:999px;background:#25253a;color:#ddd;font-size:12px;font-weight:800}
+</style>
+</head>
+<body>
+<main class="app">
+<span class="badge">Prototype Vercel</span>
+<h1>🎬 ReelSync AI</h1>
+<p>Ajoute tes photos/vidéos + une musique, choisis un style, puis génère une preview Reel 9:16 directement sur ton iPhone.</p>
+
+<div class="card">
+<label>1. Choisis tes contenus</label>
+<input id="mediaInput" type="file" accept="image/*,video/*" multiple>
+<p class="small">Sélectionne 3 à 8 photos/vidéos pour un rendu plus dynamique.</p>
+</div>
+
+<div class="card">
+<label>2. Ajoute ton audio</label>
+<input id="audioInput" type="file" accept="audio/*">
+<p class="small">Prototype : transitions rythmées simulées. V1 avancée : vraie détection des beats serveur.</p>
+</div>
+
+<div class="card">
+<label>3. Choisis le style</label>
+<div class="row">
+<select id="style">
+<option value="viral">Viral — flash/zoom</option>
+<option value="luxury">Luxury — smooth</option>
+<option value="sport">Sport — punchy</option>
+<option value="travel">Travel — cinematic</option>
+</select>
+<select id="duration">
+<option value="8">8 secondes</option>
+<option value="12">12 secondes</option>
+<option value="15">15 secondes</option>
+</select>
+</div>
+<button id="generateBtn">⚡ Générer le Reel</button>
+<a id="downloadLink" class="download">Télécharger la vidéo</a>
+<p id="status" class="status"></p>
+</div>
+
+<canvas id="canvas" width="1080" height="1920"></canvas>
+<audio id="audio" crossorigin="anonymous"></audio>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

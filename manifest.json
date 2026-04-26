@@ -1,0 +1,9 @@
+{
+  "name": "ReelSync AI",
+  "short_name": "ReelSync",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08080d",
+  "theme_color": "#7c5cff",
+  "icons": []
+}
